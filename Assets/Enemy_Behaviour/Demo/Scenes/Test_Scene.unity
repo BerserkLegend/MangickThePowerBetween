@@ -552,6 +552,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.65
       objectReference: {fileID: 0}
+    - target: {fileID: 1004, guid: b0d0de68728a4ffa9a3a7c0642c42d60, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1005, guid: b0d0de68728a4ffa9a3a7c0642c42d60, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -577,6 +585,10 @@ PrefabInstance:
       propertyPath: graphAgent
       value: 
       objectReference: {fileID: 1621498342}
+    - target: {fileID: 2006, guid: 7aa8e9cb2b9c4a80b2c97e41abd60044, type: 3}
+      propertyPath: playerLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

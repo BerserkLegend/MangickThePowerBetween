@@ -25,11 +25,15 @@ namespace EnemyBehaviourPrototype
         private float visualUntil;
         private bool jumpQueued;
 
-        private void Awake()
+        private void OnEnable()
         {
             body = GetComponent<Rigidbody2D>();
             playerCollider = GetComponent<BoxCollider2D>();
             groundFilter = new ContactFilter2D { useTriggers = false };
+            horizontal = 0f;
+            jumpQueued = false;
+            nextAttack = 0f;
+            visualUntil = 0f;
             if (attackVisual != null) attackVisual.gameObject.SetActive(false);
         }
 

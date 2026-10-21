@@ -63,11 +63,13 @@ namespace EnemyBehaviourPrototype
                 nearestDistance = distance;
                 nearestPlayer = candidate.gameObject;
             }
-
-            AttackTarget = nearestPlayer;
             // Use the agent API: it updates this enemy's graph instance, not the shared asset.
-            if (!graphAgent.SetVariableValue<GameObject>(targetVariable, AttackTarget))
-                WarnAboutSetup("Blackboard must contain a GameObject variable named '" + targetVariable + "'.");
+            if (nearestPlayer != AttackTarget)
+            {
+                AttackTarget = nearestPlayer;
+                if (!graphAgent.SetVariableValue<GameObject>(targetVariable, AttackTarget))
+                    WarnAboutSetup("Blackboard must contain a GameObject variable named '" + targetVariable + "'.");
+            }
         }
 
         private void OnDisable()

@@ -1,0 +1,307 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd922ae02c94c87a66e46a10a7319b9, type: 3}
+  m_Name: EnemyBlackboard
+  m_EditorClassIdentifier: Unity.Behavior.Authoring::Unity.Behavior.BehaviorBlackboardAuthoringAsset
+  AssetID:
+    m_Value0: 3782670268665620921
+    m_Value1: 18413726609959251129
+  m_Variables:
+  - rid: 4849661490687377477
+  - rid: 4849661490687377478
+  - rid: 4849661490687378280
+  - rid: 4849661490687377479
+  - rid: 4849661490687377480
+  - rid: 4849661490687377481
+  - rid: 4849661490687377482
+  - rid: 4849661490687377483
+  - rid: 4849661490687377484
+  - rid: 4849661490687377485
+  - rid: 4849661491741720617
+  - rid: 4849661490687377486
+  - rid: 4849661506640674816
+  m_VersionTimestamp: 639281997356636059
+  m_CommandBuffer:
+    m_Commands: []
+  m_RuntimeBlackboardAsset: {fileID: 5571450388406607515}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4849661490687377477
+      type: {class: 'TypedVariableModel`1[[EnemyState, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 7666573222025395484
+          m_Value1: 13598071873219776395
+        Name: State
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0
+    - rid: 4849661490687377478
+      type: {class: 'TypedVariableModel`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 14922796941807394737
+          m_Value1: 16726129254756521135
+        Name: AttackTarget
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 4849661490687377479
+      type: {class: 'TypedVariableModel`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 17138316394699366015
+          m_Value1: 1901770278221284455
+        Name: Boundary1
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 4849661490687377480
+      type: {class: 'TypedVariableModel`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 6710215558308205619
+          m_Value1: 14481833592523315965
+        Name: Boundary2
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 4849661490687377481
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 17643248854488658357
+          m_Value1: 15657678017951148906
+        Name: AttackSpeed
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 4
+    - rid: 4849661490687377482
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 16416858788430336501
+          m_Value1: 9029975126793421876
+        Name: AttackDistance
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0.5
+    - rid: 4849661490687377483
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 18096751467364792011
+          m_Value1: 14681947750382383510
+        Name: AttackInterval
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 1
+    - rid: 4849661490687377484
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 7780570223845196545
+          m_Value1: 11587350683298323676
+        Name: IdleDuration
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 1.5
+    - rid: 4849661490687377485
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 7922397514511774501
+          m_Value1: 15623029234810841781
+        Name: PatrolPause
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 1
+    - rid: 4849661490687377486
+      type: {class: 'TypedVariableModel`1[[Unity.Behavior.BehaviorGraph, Unity.Behavior]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 7912779115428095180
+          m_Value1: 13538870816165416772
+        Name: Attack
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 4180438157710200186, guid: 4a490eba469488b4eb356ad49360889b, type: 2}
+    - rid: 4849661490687378280
+      type: {class: 'TypedVariableModel`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 2605710183140133009
+          m_Value1: 288246119710529143
+        Name: AttackTargetContinue
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 4849661491741720617
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 15713655195256924053
+          m_Value1: 1590321743925595461
+        Name: ContinueAttackAfterLostPlayer
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 3
+    - rid: 4849661506640674816
+      type: {class: 'TypedVariableModel`1[[Unity.Behavior.BehaviorGraph, Unity.Behavior]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 6429866433558009697
+          m_Value1: 2087034475844749906
+        Name: AttackAfterLost
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: -4787020362766696876, guid: a0622e279f967394f9f6b1107c747240, type: 2}
+--- !u!114 &5571450388406607515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
+  m_Name: EnemyBlackboard
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.RuntimeBlackboardAsset
+  VersionTimestamp: 639281997356636059
+  AssetID:
+    m_Value0: 3782670268665620921
+    m_Value1: 18413726609959251129
+  m_Blackboard:
+    m_Variables:
+    - rid: 4849661490687377543
+    - rid: 4849661490687377544
+    - rid: 4849661490687378379
+    - rid: 4849661490687377545
+    - rid: 4849661490687377546
+    - rid: 4849661490687377547
+    - rid: 4849661490687377548
+    - rid: 4849661490687377549
+    - rid: 4849661490687377550
+    - rid: 4849661490687377551
+    - rid: 4849661491741720713
+    - rid: 4849661490687377552
+    - rid: 4849661506640674943
+  m_SharedBlackboardVariableGuids: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 4849661490687377543
+      type: {class: 'BlackboardVariable`1[[EnemyState, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7666573222025395484
+          m_Value1: 13598071873219776395
+        Name: State
+        m_Value: 0
+    - rid: 4849661490687377544
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 14922796941807394737
+          m_Value1: 16726129254756521135
+        Name: AttackTarget
+        m_Value: {fileID: 0}
+    - rid: 4849661490687377545
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17138316394699366015
+          m_Value1: 1901770278221284455
+        Name: Boundary1
+        m_Value: {fileID: 0}
+    - rid: 4849661490687377546
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6710215558308205619
+          m_Value1: 14481833592523315965
+        Name: Boundary2
+        m_Value: {fileID: 0}
+    - rid: 4849661490687377547
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17643248854488658357
+          m_Value1: 15657678017951148906
+        Name: AttackSpeed
+        m_Value: 4
+    - rid: 4849661490687377548
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 16416858788430336501
+          m_Value1: 9029975126793421876
+        Name: AttackDistance
+        m_Value: 0.5
+    - rid: 4849661490687377549
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 18096751467364792011
+          m_Value1: 14681947750382383510
+        Name: AttackInterval
+        m_Value: 1
+    - rid: 4849661490687377550
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7780570223845196545
+          m_Value1: 11587350683298323676
+        Name: IdleDuration
+        m_Value: 1.5
+    - rid: 4849661490687377551
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7922397514511774501
+          m_Value1: 15623029234810841781
+        Name: PatrolPause
+        m_Value: 1
+    - rid: 4849661490687377552
+      type: {class: 'BlackboardVariable`1[[Unity.Behavior.BehaviorGraph, Unity.Behavior]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7912779115428095180
+          m_Value1: 13538870816165416772
+        Name: Attack
+        m_Value: {fileID: 4180438157710200186, guid: 4a490eba469488b4eb356ad49360889b, type: 2}
+    - rid: 4849661490687378379
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2605710183140133009
+          m_Value1: 288246119710529143
+        Name: AttackTargetContinue
+        m_Value: {fileID: 0}
+    - rid: 4849661491741720713
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 15713655195256924053
+          m_Value1: 1590321743925595461
+        Name: ContinueAttackAfterLostPlayer
+        m_Value: 3
+    - rid: 4849661506640674943
+      type: {class: 'BlackboardVariable`1[[Unity.Behavior.BehaviorGraph, Unity.Behavior]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6429866433558009697
+          m_Value1: 2087034475844749906
+        Name: AttackAfterLost
+        m_Value: {fileID: -4787020362766696876, guid: a0622e279f967394f9f6b1107c747240, type: 2}
