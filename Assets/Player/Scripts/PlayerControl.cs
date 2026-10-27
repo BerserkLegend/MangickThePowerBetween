@@ -6,7 +6,6 @@ public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float runSpeed = 10f;
-    [SerializeField] private float jumpForce = 12f;
     
     [Header("Roll Frame Data")]
     [SerializeField] private float rollForce = 20f;
@@ -14,22 +13,48 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float recoveryFrames = 15f; 
     [SerializeField] private float targetFPS = 60f;      
 
-    public bool isInvulnerable; 
-    
+    public bool isInvulnerable;   
     private Rigidbody2D rb;
     private float horizontalInput;
     private bool isRunning;
     private bool isRolling; 
+    private PlayerStats stats;
+
+    [Header("Jump & Buffer Settings")]
+    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float jumpBufferTime = 0.2f;
+    private float jumpBufferCounter;
+
+    [Header("Ground Check")]
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundCheckRadius = 0.2f;
+    [SerializeField] private LayerMask groundLayer;
+    private bool isGrounded;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        stats = GetComponent<PlayerStats>();
     }
 
     void Update()
     {
-        if (isRolling) return; 
+        if (isRolling || (stats != null && stats.isStunned)) return; 
 
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+        if (jumpBufferCounter > 0f)
+        {
+            jumpBufferCounter -= Time.deltaTime;
+        }
+
+        if (jumpBufferCounter > 0f && isGrounded)
+        {
+            jumpBufferCounter = 0f;
+        
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); 
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        }
         Vector2 screenMousePosition = Mouse.current.position.ReadValue();
         
         Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(screenMousePosition);
@@ -51,9 +76,9 @@ public class PlayerControl : MonoBehaviour
 
     void OnJump(InputValue value)
     {
-        if (Mathf.Abs(rb.linearVelocity.y) < 0.01f && !isRolling)
+    if (value.isPressed)
         {
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            jumpBufferCounter = jumpBufferTime;
         }
     }
 
