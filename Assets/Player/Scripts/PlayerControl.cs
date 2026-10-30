@@ -24,6 +24,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float jumpForce = 12f;
     [SerializeField] private float jumpBufferTime = 0.2f;
     private float jumpBufferCounter;
+    [SerializeField] private float coyoteTime = 0.15f;
+    private float coyoteTimeCounter;
 
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
@@ -43,25 +45,36 @@ public class PlayerControl : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
+        if (isGrounded)
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
         if (jumpBufferCounter > 0f)
         {
             jumpBufferCounter -= Time.deltaTime;
         }
 
-        if (jumpBufferCounter > 0f && isGrounded)
+        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f)
         {
             jumpBufferCounter = 0f;
+            coyoteTimeCounter = 0f; 
         
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); 
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
-        Vector2 screenMousePosition = Mouse.current.position.ReadValue();
-        
-        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(screenMousePosition);
 
-        float facingDirection = worldMousePosition.x > transform.position.x ? 1f : -1f;
-
-        transform.localScale = new Vector3(facingDirection, 1f, 1f);
+        if (Camera.main != null && Mouse.current != null)
+        {
+            Vector2 screenMousePosition = Mouse.current.position.ReadValue();
+            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(screenMousePosition);
+            float facingDirection = worldMousePosition.x > transform.position.x ? 1f : -1f;
+            transform.localScale = new Vector3(facingDirection, 1f, 1f);
+        }
     }
 
     void OnMove(InputValue value)
