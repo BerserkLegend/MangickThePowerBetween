@@ -33,10 +33,15 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     private bool isGrounded;
 
+    [Header("Weapons")]
+    public WeaponBase primaryWeapon;
+    public WeaponBase secondaryWeapon;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<PlayerStats>();
+        if (primaryWeapon != null) primaryWeapon.Initialize(stats, this);
     }
 
     void Update()
@@ -137,5 +142,19 @@ public class PlayerControl : MonoBehaviour
 
         float currentSpeed = isRunning ? runSpeed : walkSpeed;
         rb.linearVelocity = new Vector2(horizontalInput * currentSpeed, rb.linearVelocity.y);
+    }
+    void OnPrimaryAttack(InputValue value)
+    {
+        if (value.isPressed && primaryWeapon != null)
+        {
+            primaryWeapon.ExecuteBasicAttack();
+        }
+    }
+    void OnSecondaryAttack(InputValue value)
+    {
+        if (value.isPressed && primaryWeapon != null)
+        {
+            primaryWeapon.ExecuteSpecialAttack();
+        }
     }
 }

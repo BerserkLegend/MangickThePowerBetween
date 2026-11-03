@@ -98,6 +98,17 @@ public class PlayerStats : MonoBehaviour
         return false; 
     }
 
+    public void AddMana(float amount)
+    {
+        float maxPossibleMana = unlockedManaSectors * manaPerSector;
+        currentMana += amount;
+    
+        if (currentMana > maxPossibleMana)
+        {
+            currentMana = maxPossibleMana;
+        }
+    }
+
     public void Heal(int amount)
     {
         int maxPossibleHp = unlockedHpSectors * hpPerSector;
