@@ -41,7 +41,14 @@ public class PlayerControl : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<PlayerStats>();
-        if (primaryWeapon != null) primaryWeapon.Initialize(stats, this);
+        if (primaryWeapon != null)
+        {
+            primaryWeapon.Initialize(stats, this);
+        }
+        if (secondaryWeapon != null)
+        {
+            secondaryWeapon.Initialize(stats, this);
+        }
     }
 
     void Update()
