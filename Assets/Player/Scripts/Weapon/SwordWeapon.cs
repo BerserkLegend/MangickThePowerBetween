@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class SwordWeapon : WeaponBase
-{
+{   [SerializeField] private Animator anim;
+
     [Header("Swipe (Basic)")]
     public float swipeDamage = 10f;
     public float windUpFrames = 6f;
@@ -24,10 +25,21 @@ public class SwordWeapon : WeaponBase
     private bool isParrying = false;
     private bool parrySuccessful = false;
 
+    private int comboStep = 0;
+    private bool continueCombo = false;
+
     public override void ExecuteBasicAttack()
     {
-        if (isAttacking) return;
-        StartCoroutine(SwipeRoutine());
+        if (isAttacking)
+        {
+            if (comboStep == 1) 
+            {
+                continueCombo = true;
+            }
+            return;
+        }
+        
+        StartCoroutine(ComboSwipeRoutine());
     }
 
     public override void ExecuteSpecialAttack()
@@ -36,18 +48,59 @@ public class SwordWeapon : WeaponBase
         StartCoroutine(CounterThrustRoutine());
     }
 
-    private IEnumerator SwipeRoutine()
+    private IEnumerator ComboSwipeRoutine()
     {
         isAttacking = true;
+        comboStep = 1;
+        continueCombo = false;
 
+        anim.SetTrigger("Attack1");
         AimTowardsMouse();
-
+        
         yield return new WaitForSeconds(windUpFrames / targetFPS);
+        
+        DealDamage(swipeDamage); 
+        yield return new WaitForSeconds(activeFrames / targetFPS);
 
+        float recoveryTimer = 0;
+        float maxRecovery = recoveryFrames / targetFPS;
+
+        while (recoveryTimer < maxRecovery)
+        {
+            if (continueCombo)
+            {
+                break;
+            }
+            recoveryTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        if (continueCombo)
+        {
+            comboStep = 2;
+            continueCombo = false;
+            
+            anim.SetTrigger("Attack2");
+            AimTowardsMouse();
+            
+            yield return new WaitForSeconds(windUpFrames / targetFPS); 
+            
+            DealDamage(swipeDamage * 1.5f); 
+            
+            yield return new WaitForSeconds(activeFrames / targetFPS);
+            yield return new WaitForSeconds(recoveryFrames / targetFPS);
+        }
+
+        isAttacking = false;
+        comboStep = 0;
+    }
+
+    private void DealDamage(float currentDamage)
+    {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyStats>()?.TakeDamage(swipeDamage, 10f);
+            enemy.GetComponent<EnemyStats>()?.TakeDamage(currentDamage, 10f);
             
             if (manaSpillPrefab != null)
             {
@@ -58,14 +111,8 @@ public class SwordWeapon : WeaponBase
         Collider2D[] hitFoliage = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, foliageLayer);
         foreach (Collider2D foliage in hitFoliage)
         {
-            Destroy(foliage.gameObject);
+            Destroy(foliage.gameObject); 
         }
-
-        yield return new WaitForSeconds(activeFrames / targetFPS);
-
-        yield return new WaitForSeconds(recoveryFrames / targetFPS);
-        
-        isAttacking = false;
     }
 
     private IEnumerator CounterThrustRoutine()

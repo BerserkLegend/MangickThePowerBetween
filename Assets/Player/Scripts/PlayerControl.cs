@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
+    private Vector3 originalScale;
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float runSpeed = 10f;
     
@@ -37,10 +38,14 @@ public class PlayerControl : MonoBehaviour
     public WeaponBase primaryWeapon;
     public WeaponBase secondaryWeapon;
 
+    private Animator anim;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<PlayerStats>();
+        originalScale = transform.localScale;
+        anim = GetComponent<Animator>();
         if (primaryWeapon != null)
         {
             primaryWeapon.Initialize(stats, this);
@@ -80,12 +85,18 @@ public class PlayerControl : MonoBehaviour
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
 
+        anim.SetFloat("Speed", Mathf.Abs(horizontalInput));
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetFloat("yVelocity", rb.linearVelocity.y);
+        
         if (Camera.main != null && Mouse.current != null)
         {
             Vector2 screenMousePosition = Mouse.current.position.ReadValue();
             Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(screenMousePosition);
+    
             float facingDirection = worldMousePosition.x > transform.position.x ? 1f : -1f;
-            transform.localScale = new Vector3(facingDirection, 1f, 1f);
+    
+            transform.localScale = new Vector3(facingDirection * Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
         }
     }
 
@@ -118,7 +129,8 @@ public class PlayerControl : MonoBehaviour
     private IEnumerator RollRoutine()
     {
         isRolling = true;       
-        isInvulnerable = true;  
+        isInvulnerable = true;
+        anim.SetTrigger("Roll");
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
 
         float rollDirection;
