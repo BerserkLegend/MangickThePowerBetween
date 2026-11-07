@@ -122,8 +122,8 @@ EnemyAggro. Можно сузить Enemy Layers до Enemy и назначат�
 
 Существующие: Health.cs (события урона/HP, Heal/ResetHealth), EnemySensor.cs
 (alert-память, опциональные модули), EnemyState.cs (Retreat = 3), AttackPlayerAction.cs
-(AttackOnce), PrototypePlayer2D.cs (передать атакующего через контекст старого
-OnPrototypeHit(float), без изменения управления), Base_Behaviour.asset,
+(AttackOnce), PrototypePlayer2D.cs (прямой урон через Health и Collider2D вместо
+пересылки сообщений, без изменения управления), Base_Behaviour.asset,
 EnemyBlackboard.asset, AttackBlackboard.asset, Attack_Melee.asset, README_Prototype.txt.
 Attack_AfterTargetLost.asset автоматически перекомпилирован Unity с обновлённым
 контрактом атаки; его исходные ноды и логика продолжения погони сохранены.
@@ -131,14 +131,14 @@ Attack_AfterTargetLost.asset автоматически перекомпилир
 Добавлены: EnemyRetreat.cs, RetreatStage.cs, EnemyAggro.cs,
 RetreatCheckCondition.cs, BeginRetreatAction.cs, EndRetreatAction.cs,
 RetreatCleanupAction.cs, MoveToRetreatSafetyAction.cs, RecoverRetreatHealthAction.cs,
-BeginCounterAttackAction.cs, EndCounterAttackAction.cs, PrototypeDamageContext.cs,
+BeginCounterAttackAction.cs, EndCounterAttackAction.cs,
 Aggro_Engage.asset / AggroBlackboard.asset, Retreat_Recover.asset /
 RetreatBlackboard.asset, PrototypeEnemy_Retreat.prefab, RetreatAggro_Test.unity,
 этот документ. `.meta` создаёт Unity.
 
 Defender, исходный PrototypeEnemy.prefab, исходная Test_Scene и Project Settings
-не требуют изменений. Враг по-прежнему выводит `attacked player`: настоящий урон
-игроку остаётся ответственностью выбранного графа атаки.
+не требуют изменений. Атака врага теперь снимает HP через Collider2D и Health; получение урона
+игроком обрабатывается общим Health.
 
 ## Проверка
 
@@ -148,5 +148,12 @@ Patrol → Attack → продолжение погони → Idle → Patrol, �
 порог 90%, стандартные 25/50/60% и 5 секунд ожидания, постепенное лечение,
 лимит и -1, сброс счётчика при включении, cleanup при прерывании графа,
 уничтожение цели, одношаговое агро/время памяти/cooldown и реальный удар PrototypePlayer2D.
-Временные инструменты сборки и проверки не входят в проект; автоматического
-пересоздания графов и новых пунктов Tools нет.
+Повторяемая проверка боя: **Tools → Verify Collider Combat**. Она открывает демосцену,
+временно меняет настройки в Play Mode и проверяет урон по составным коллайдерам,
+агро от удара и оповещение союзника, отход, постепенное лечение и удар врага.
+После проверки Play Mode останавливается; результат записывается в
+`Library/ColliderCombatVerification.txt`. Перед запуском сохрани изменения сцены.
+Пакетный запуск в отдельной копии проекта:
+`Unity.exe -batchmode -nographics -projectPath <copy> -executeMethod ColliderCombatVerification.Run -logFile <log>`.
+Не добавляй `-quit`: редактор завершится сам после проверки с кодом 0 или 1.
+Графы автоматически не пересоздаются.

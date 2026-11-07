@@ -32,7 +32,7 @@ Enemies/Common/
 
 Demo/Scenes/ — тестовая сцена целиком.
 Shared/Art/ — общие материалы и спрайты прототипа.
-Shared/Combat/ — контекст атакующего для совместимого OnPrototypeHit(float).
+Demo/Editor/ — пакетная проверка ColliderCombatVerification.Run.
 
 Настройки:
 - Игрок: компонент PrototypePlayer2D на игроке.
@@ -43,8 +43,8 @@ Shared/Combat/ — контекст атакующего для совмести
 - Тип атаки: переменная Attack; параметры AttackSpeed, AttackDistance, AttackInterval.
 - В Run Subgraph для динамического вызова выбирай соответствующий Blackboard и связывай его параметры с EnemyBlackboard.
 
-Удар игрока передаёт OnPrototypeHit(float damage) и отталкивает динамические Rigidbody2D.
-Health принимает урон; атака врага пока выводит attacked player в консоль.
+Удар игрока ищет Health через Collider2D в Physics2D.OverlapBoxAll и вызывает TakeDamage(1f, attacker) напрямую; составные коллайдеры получают один удар. Динамические Rigidbody2D отталкиваются.
+Атака врага проверяет расстояние между Collider2D и снимает HP игрока. Health добавляется игроку при включении. События Health уведомляют агро и отступление об уже полученном уроне.
 
 Новый тип врага добавляй рядом с Base и Defender, со своими Behavior, Prefabs и, при необходимости, Runtime.
 Общую логику нескольких типов держи в Enemies/Common. Классы, namespaces и GUID при этой реорганизации сохранены.

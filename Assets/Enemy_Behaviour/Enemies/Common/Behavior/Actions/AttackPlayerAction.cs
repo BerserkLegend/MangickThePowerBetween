@@ -64,7 +64,13 @@ public partial class AttackPlayerAction : Action
             Stop();
             if (Time.time >= nextAttack)
             {
-                Debug.Log("attacked player", GameObject);
+                // Damage is resolved only against the collider actually in melee range.
+                var receiver = targetCollider != null
+                    ? targetCollider.GetComponentInParent<EnemyBehaviourPrototype.Health>() : null;
+                if (ownCollider == null || !ownCollider.enabled || receiver == null
+                    || !receiver.isActiveAndEnabled || receiver.IsDead || targetCollider.isTrigger
+                    || !targetCollider.enabled || !target.activeInHierarchy) return Status.Running;
+                receiver.TakeDamage(1f, GameObject);
                 if (retreat != null) retreat.NotifyCounterStrike();
                 nextAttack = Time.time + Mathf.Max(0.1f, AttackInterval.Value);
                 if (AttackOnce != null && AttackOnce.Value) return Status.Success;

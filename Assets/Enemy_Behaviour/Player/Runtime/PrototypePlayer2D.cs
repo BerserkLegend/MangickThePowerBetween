@@ -17,7 +17,7 @@ namespace EnemyBehaviourPrototype
         private Rigidbody2D body;
         private BoxCollider2D playerCollider;
         private readonly RaycastHit2D[] groundHits = new RaycastHit2D[8];
-        private readonly HashSet<Rigidbody2D> struckBodies = new HashSet<Rigidbody2D>();
+        private readonly HashSet<Health> struckTargets = new HashSet<Health>();
         private ContactFilter2D groundFilter;
         private float horizontal;
         private float facing = 1f;
@@ -28,6 +28,7 @@ namespace EnemyBehaviourPrototype
         private void OnEnable()
         {
             body = GetComponent<Rigidbody2D>();
+            if (GetComponent<Health>() == null) gameObject.AddComponent<Health>();
             playerCollider = GetComponent<BoxCollider2D>();
             groundFilter = new ContactFilter2D { useTriggers = false };
             horizontal = 0f;
@@ -86,16 +87,16 @@ namespace EnemyBehaviourPrototype
                 attackVisual.localScale = new Vector3(attackSize.x, attackSize.y, 1f);
             }
 
-            struckBodies.Clear();
+            struckTargets.Clear();
             foreach (Collider2D hit in Physics2D.OverlapBoxAll(center, attackSize, 0f))
             {
+                Health receiver = hit.GetComponentInParent<Health>();
+                if (hit.isTrigger || receiver == null || receiver.gameObject == gameObject
+                    || !receiver.isActiveAndEnabled || receiver.IsDead || !struckTargets.Add(receiver)) continue;
+                receiver.TakeDamage(1f, gameObject);
                 Rigidbody2D target = hit.attachedRigidbody;
-                if (hit.isTrigger || target == null || target == body
-                    || target.bodyType != RigidbodyType2D.Dynamic || !struckBodies.Add(target)) continue;
-                target.AddForce(new Vector2(facing * hitImpulse, hitImpulse * 0.3f), ForceMode2D.Impulse);
-                // Optional hook for your enemy script: void OnPrototypeHit(float damage).
-                using (new PrototypeDamageContext.Scope(gameObject))
-                    target.gameObject.SendMessage("OnPrototypeHit", 1f, SendMessageOptions.DontRequireReceiver);
+                if (target != null && target.bodyType == RigidbodyType2D.Dynamic)
+                    target.AddForce(new Vector2(facing * hitImpulse, hitImpulse * 0.3f), ForceMode2D.Impulse);
             }
         }
     }

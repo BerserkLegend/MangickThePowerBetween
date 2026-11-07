@@ -36,11 +36,6 @@ namespace EnemyBehaviourPrototype
                 spriteRenderer.color = originalColor;
         }
 
-        public void OnPrototypeHit(float damage)
-        {
-            TakeDamage(damage, PrototypeDamageContext.Attacker);
-        }
-
         public void TakeDamage(float damage)
         {
             TakeDamage(damage, null);
