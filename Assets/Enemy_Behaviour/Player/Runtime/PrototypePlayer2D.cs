@@ -94,7 +94,8 @@ namespace EnemyBehaviourPrototype
                     || target.bodyType != RigidbodyType2D.Dynamic || !struckBodies.Add(target)) continue;
                 target.AddForce(new Vector2(facing * hitImpulse, hitImpulse * 0.3f), ForceMode2D.Impulse);
                 // Optional hook for your enemy script: void OnPrototypeHit(float damage).
-                target.gameObject.SendMessage("OnPrototypeHit", 1f, SendMessageOptions.DontRequireReceiver);
+                using (new PrototypeDamageContext.Scope(gameObject))
+                    target.gameObject.SendMessage("OnPrototypeHit", 1f, SendMessageOptions.DontRequireReceiver);
             }
         }
     }

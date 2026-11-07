@@ -29,7 +29,14 @@ MonoBehaviour:
   - rid: 4849661491741720617
   - rid: 4849661490687377486
   - rid: 4849661506640674816
-  m_VersionTimestamp: 639281997356636059
+  - rid: 4849661509744197865
+  - rid: 4849661511079297265
+  - rid: 4849661507704455622
+  - rid: 4849661507704455623
+  - rid: 4849661507704455624
+  - rid: 4849661507704455625
+  - rid: 4849661507704455626
+  m_VersionTimestamp: 639282166881187297
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: 5571450388406607515}
@@ -166,6 +173,76 @@ MonoBehaviour:
         IsExposed: 1
         m_IsShared: 0
         m_Value: {fileID: -4787020362766696876, guid: a0622e279f967394f9f6b1107c747240, type: 2}
+    - rid: 4849661507704455622
+      type: {class: 'TypedVariableModel`1[[EnemyBehaviourPrototype.RetreatStage, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 13068852913399144357
+          m_Value1: 11336796663137749155
+        Name: RetreatStage
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0
+    - rid: 4849661507704455623
+      type: {class: 'TypedVariableModel`1[[System.Int32, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 7258960505222535146
+          m_Value1: 11305352509018168663
+        Name: RetreatSignal
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0
+    - rid: 4849661507704455624
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 3160687832567068535
+          m_Value1: 14648067706237521259
+        Name: RetreatSurvivalTime
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 5
+    - rid: 4849661507704455625
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 10380221354379221240
+          m_Value1: 16925325285117347872
+        Name: RetreatCounterWindow
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0.45
+    - rid: 4849661507704455626
+      type: {class: 'TypedVariableModel`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 5084978348529851725
+          m_Value1: 6674914072878223218
+        Name: RetreatTarget
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 4849661509744197865
+      type: {class: 'TypedVariableModel`1[[Unity.Behavior.BehaviorGraph, Unity.Behavior]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 29347253153770201
+          m_Value1: 13586485955176800286
+        Name: Retreat
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 8308366118378108812, guid: 9b2d478e8e524fe40992da22a605c378, type: 2}
+    - rid: 4849661511079297265
+      type: {class: 'TypedVariableModel`1[[Unity.Behavior.BehaviorGraph, Unity.Behavior]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 12728725247332007765
+          m_Value1: 17694793918518038624
+        Name: Aggro
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: -4876900773367445150, guid: 75fcc0eb6da38e84289bf7c234a2653e, type: 2}
 --- !u!114 &5571450388406607515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: EnemyBlackboard
   m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.RuntimeBlackboardAsset
-  VersionTimestamp: 639281997356636059
+  VersionTimestamp: 639282166881187297
   AssetID:
     m_Value0: 3782670268665620921
     m_Value1: 18413726609959251129
@@ -197,6 +274,13 @@ MonoBehaviour:
     - rid: 4849661491741720713
     - rid: 4849661490687377552
     - rid: 4849661506640674943
+    - rid: 4849661509744198092
+    - rid: 4849661511079297469
+    - rid: 4849661507704455749
+    - rid: 4849661507704455750
+    - rid: 4849661507704455751
+    - rid: 4849661507704455752
+    - rid: 4849661507704455753
   m_SharedBlackboardVariableGuids: []
   references:
     version: 2
@@ -305,3 +389,59 @@ MonoBehaviour:
           m_Value1: 2087034475844749906
         Name: AttackAfterLost
         m_Value: {fileID: -4787020362766696876, guid: a0622e279f967394f9f6b1107c747240, type: 2}
+    - rid: 4849661507704455749
+      type: {class: 'BlackboardVariable`1[[EnemyBehaviourPrototype.RetreatStage, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 13068852913399144357
+          m_Value1: 11336796663137749155
+        Name: RetreatStage
+        m_Value: 0
+    - rid: 4849661507704455750
+      type: {class: 'BlackboardVariable`1[[System.Int32, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7258960505222535146
+          m_Value1: 11305352509018168663
+        Name: RetreatSignal
+        m_Value: 0
+    - rid: 4849661507704455751
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 3160687832567068535
+          m_Value1: 14648067706237521259
+        Name: RetreatSurvivalTime
+        m_Value: 5
+    - rid: 4849661507704455752
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 10380221354379221240
+          m_Value1: 16925325285117347872
+        Name: RetreatCounterWindow
+        m_Value: 0.45
+    - rid: 4849661507704455753
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 5084978348529851725
+          m_Value1: 6674914072878223218
+        Name: RetreatTarget
+        m_Value: {fileID: 0}
+    - rid: 4849661509744198092
+      type: {class: 'BlackboardVariable`1[[Unity.Behavior.BehaviorGraph, Unity.Behavior]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 29347253153770201
+          m_Value1: 13586485955176800286
+        Name: Retreat
+        m_Value: {fileID: 8308366118378108812, guid: 9b2d478e8e524fe40992da22a605c378, type: 2}
+    - rid: 4849661511079297469
+      type: {class: 'BlackboardVariable`1[[Unity.Behavior.BehaviorGraph, Unity.Behavior]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 12728725247332007765
+          m_Value1: 17694793918518038624
+        Name: Aggro
+        m_Value: {fileID: -4876900773367445150, guid: 75fcc0eb6da38e84289bf7c234a2653e, type: 2}

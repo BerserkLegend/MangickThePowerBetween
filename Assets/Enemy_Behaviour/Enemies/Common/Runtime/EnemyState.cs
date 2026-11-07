@@ -5,5 +5,6 @@ public enum EnemyState
 {
     Patrol = 0,
     Attack = 1,
-    Idle = 2
+    Idle = 2,
+    Retreat = 3
 }

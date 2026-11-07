@@ -1,6 +1,8 @@
 Enemy_Behaviour — вертикальный срез прототипа боя с врагами
 
 Запуск: открой Demo/Scenes/Test_Scene.unity и нажми Play.
+Пример отступления и агро: Demo/Scenes/RetreatAggro_Test.unity.
+Настройки и подключение: Enemies/Common/Retreat/README_RetreatAggro.md.
 A/D или стрелки — движение; Space — прыжок; J или ЛКМ — удар.
 Голубой — игрок, красный — враг, жёлтый — область удара.
 
@@ -11,7 +13,7 @@ Player/
   Prefabs/ — префаб игрока.
 
 Enemies/Base/
-  Behavior/ — основной Base_Behaviour с enum Patrol / Attack / Idle.
+  Behavior/ — основной Base_Behaviour с enum Patrol / Attack / Idle / Retreat.
   Prefabs/ — префаб базового врага.
 
 Enemies/Defender/
@@ -25,9 +27,12 @@ Enemies/Common/
   Behavior/Conditions/ — условия наличия и отсутствия цели.
   Behavior/Blackboards/ — EnemyBlackboard, AttackBlackboard, LostTargetBlackboard.
   Behavior/Subgraphs/ — Attack_Melee и Attack_AfterTargetLost.
+  Retreat/ — настройки, отдельные ноды, общий Retreat_Recover и внешний Blackboard.
+  Aggro/ — рассылка агро, общий Aggro_Engage и внешний Blackboard.
 
 Demo/Scenes/ — тестовая сцена целиком.
 Shared/Art/ — общие материалы и спрайты прототипа.
+Shared/Combat/ — контекст атакующего для совместимого OnPrototypeHit(float).
 
 Настройки:
 - Игрок: компонент PrototypePlayer2D на игроке.

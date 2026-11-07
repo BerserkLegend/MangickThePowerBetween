@@ -1,0 +1,247 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd922ae02c94c87a66e46a10a7319b9, type: 3}
+  m_Name: RetreatBlackboard
+  m_EditorClassIdentifier: Unity.Behavior.Authoring::Unity.Behavior.BehaviorBlackboardAuthoringAsset
+  AssetID:
+    m_Value0: 0
+    m_Value1: 0
+  m_Variables:
+  - rid: 4849661507704456035
+  - rid: 4849661507704456036
+  - rid: 4849661507704456037
+  - rid: 4849661507704456038
+  - rid: 4849661507704456039
+  - rid: 4849661507704456040
+  - rid: 4849661507704456041
+  - rid: 4849661507704456042
+  - rid: 4849661507704456043
+  - rid: 4849661507704456044
+  m_VersionTimestamp: 639282115506776019
+  m_CommandBuffer:
+    m_Commands: []
+  m_RuntimeBlackboardAsset: {fileID: 819734723767688959}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4849661507704456035
+      type: {class: 'TypedVariableModel`1[[EnemyState, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 2062907196440094752
+          m_Value1: 17983808070088969088
+        Name: State
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0
+    - rid: 4849661507704456036
+      type: {class: 'TypedVariableModel`1[[Unity.Behavior.BehaviorGraph, Unity.Behavior]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 7106496708365793322
+          m_Value1: 2809186589285292775
+        Name: Attack
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 4180438157710200186, guid: 4a490eba469488b4eb356ad49360889b, type: 2}
+    - rid: 4849661507704456037
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 1208636414772416922
+          m_Value1: 12396289178156271809
+        Name: AttackSpeed
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 4
+    - rid: 4849661507704456038
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 11009321177153917790
+          m_Value1: 9854723614775666627
+        Name: AttackDistance
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0.5
+    - rid: 4849661507704456039
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 11882383959618378231
+          m_Value1: 6676534682471284581
+        Name: AttackInterval
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 1
+    - rid: 4849661507704456040
+      type: {class: 'TypedVariableModel`1[[EnemyBehaviourPrototype.RetreatStage, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 17424599068845843540
+          m_Value1: 7888495059733168418
+        Name: RetreatStage
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0
+    - rid: 4849661507704456041
+      type: {class: 'TypedVariableModel`1[[System.Int32, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 12751839048984295245
+          m_Value1: 7189130525551883049
+        Name: RetreatSignal
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0
+    - rid: 4849661507704456042
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 10448124981463280728
+          m_Value1: 17575711698142588678
+        Name: RetreatSurvivalTime
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 5
+    - rid: 4849661507704456043
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 6484801980998097876
+          m_Value1: 17217156621076816811
+        Name: RetreatCounterWindow
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0.45
+    - rid: 4849661507704456044
+      type: {class: 'TypedVariableModel`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 16192442448146848172
+          m_Value1: 5299294671896226124
+        Name: RetreatTarget
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+--- !u!114 &819734723767688959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
+  m_Name: RetreatBlackboard
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.RuntimeBlackboardAsset
+  VersionTimestamp: 639282115506776019
+  AssetID:
+    m_Value0: 0
+    m_Value1: 0
+  m_Blackboard:
+    m_Variables:
+    - rid: 4849661507704456054
+    - rid: 4849661507704456055
+    - rid: 4849661507704456056
+    - rid: 4849661507704456057
+    - rid: 4849661507704456058
+    - rid: 4849661507704456059
+    - rid: 4849661507704456060
+    - rid: 4849661507704456061
+    - rid: 4849661507704456062
+    - rid: 4849661507704456063
+  m_SharedBlackboardVariableGuids: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 4849661507704456054
+      type: {class: 'BlackboardVariable`1[[EnemyState, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2062907196440094752
+          m_Value1: 17983808070088969088
+        Name: State
+        m_Value: 0
+    - rid: 4849661507704456055
+      type: {class: 'BlackboardVariable`1[[Unity.Behavior.BehaviorGraph, Unity.Behavior]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7106496708365793322
+          m_Value1: 2809186589285292775
+        Name: Attack
+        m_Value: {fileID: 4180438157710200186, guid: 4a490eba469488b4eb356ad49360889b, type: 2}
+    - rid: 4849661507704456056
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1208636414772416922
+          m_Value1: 12396289178156271809
+        Name: AttackSpeed
+        m_Value: 4
+    - rid: 4849661507704456057
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11009321177153917790
+          m_Value1: 9854723614775666627
+        Name: AttackDistance
+        m_Value: 0.5
+    - rid: 4849661507704456058
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11882383959618378231
+          m_Value1: 6676534682471284581
+        Name: AttackInterval
+        m_Value: 1
+    - rid: 4849661507704456059
+      type: {class: 'BlackboardVariable`1[[EnemyBehaviourPrototype.RetreatStage, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17424599068845843540
+          m_Value1: 7888495059733168418
+        Name: RetreatStage
+        m_Value: 0
+    - rid: 4849661507704456060
+      type: {class: 'BlackboardVariable`1[[System.Int32, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 12751839048984295245
+          m_Value1: 7189130525551883049
+        Name: RetreatSignal
+        m_Value: 0
+    - rid: 4849661507704456061
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 10448124981463280728
+          m_Value1: 17575711698142588678
+        Name: RetreatSurvivalTime
+        m_Value: 5
+    - rid: 4849661507704456062
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6484801980998097876
+          m_Value1: 17217156621076816811
+        Name: RetreatCounterWindow
+        m_Value: 0.45
+    - rid: 4849661507704456063
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 16192442448146848172
+          m_Value1: 5299294671896226124
+        Name: RetreatTarget
+        m_Value: {fileID: 0}

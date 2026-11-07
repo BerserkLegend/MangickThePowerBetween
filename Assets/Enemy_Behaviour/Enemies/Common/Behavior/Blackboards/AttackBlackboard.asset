@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: AttackBlackboard
   m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.RuntimeBlackboardAsset
-  VersionTimestamp: 639281433761960806
+  VersionTimestamp: 639282115029756477
   AssetID:
     m_Value0: 15297220419892361236
     m_Value1: 7110643409026757289
@@ -24,6 +24,7 @@ MonoBehaviour:
     - rid: 4849661489864245392
     - rid: 4849661489864245393
     - rid: 4849661491858637085
+    - rid: 4849661507704455912
   m_SharedBlackboardVariableGuids: []
   references:
     version: 2
@@ -76,6 +77,14 @@ MonoBehaviour:
           m_Value1: 17945763811049929121
         Name: AttackTargetContinue
         m_Value: {fileID: 0}
+    - rid: 4849661507704455912
+      type: {class: 'BlackboardVariable`1[[System.Boolean, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2765258273733914264
+          m_Value1: 2852167674369845378
+        Name: AttackOnce
+        m_Value: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,7 +107,8 @@ MonoBehaviour:
   - rid: 4849661489864245353
   - rid: 4849661489864245354
   - rid: 4849661491858636987
-  m_VersionTimestamp: 639281433761960806
+  - rid: 4849661507704455754
+  m_VersionTimestamp: 639282115029756477
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: -57764044456836750}
@@ -165,3 +175,13 @@ MonoBehaviour:
         IsExposed: 1
         m_IsShared: 0
         m_Value: {fileID: 0}
+    - rid: 4849661507704455754
+      type: {class: 'TypedVariableModel`1[[System.Boolean, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 2765258273733914264
+          m_Value1: 2852167674369845378
+        Name: AttackOnce
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0

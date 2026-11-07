@@ -12,15 +12,18 @@ public partial class AttackPlayerAction : Action
     [SerializeReference] public BlackboardVariable<float> Speed = new BlackboardVariable<float>(4f);
     [SerializeReference] public BlackboardVariable<float> StopDistance = new BlackboardVariable<float>(0.5f);
     [SerializeReference] public BlackboardVariable<float> AttackInterval = new BlackboardVariable<float>(1f);
+    [SerializeReference] public BlackboardVariable<bool> AttackOnce = new BlackboardVariable<bool>(false);
 
     private Rigidbody2D rb;
     private Collider2D ownCollider;
     private float nextAttack;
+    private EnemyBehaviourPrototype.EnemyRetreat retreat;
 
     protected override Status OnStart()
     {
         rb = GameObject.GetComponent<Rigidbody2D>();
         ownCollider = GameObject.GetComponent<Collider2D>();
+        retreat = GameObject.GetComponent<EnemyBehaviourPrototype.EnemyRetreat>();
         nextAttack = Time.time;
         return TickAttack();
     }
@@ -62,7 +65,9 @@ public partial class AttackPlayerAction : Action
             if (Time.time >= nextAttack)
             {
                 Debug.Log("attacked player", GameObject);
+                if (retreat != null) retreat.NotifyCounterStrike();
                 nextAttack = Time.time + Mathf.Max(0.1f, AttackInterval.Value);
+                if (AttackOnce != null && AttackOnce.Value) return Status.Success;
             }
         }
         else
