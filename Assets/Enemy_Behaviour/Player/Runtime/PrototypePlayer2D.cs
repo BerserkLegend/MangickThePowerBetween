@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace EnemyBehaviourPrototype
 {
-    [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(Health))]
     public sealed class PrototypePlayer2D : MonoBehaviour
     {
         [SerializeField] private float moveSpeed = 6f;
@@ -28,7 +28,6 @@ namespace EnemyBehaviourPrototype
         private void OnEnable()
         {
             body = GetComponent<Rigidbody2D>();
-            if (GetComponent<Health>() == null) gameObject.AddComponent<Health>();
             playerCollider = GetComponent<BoxCollider2D>();
             groundFilter = new ContactFilter2D { useTriggers = false };
             horizontal = 0f;

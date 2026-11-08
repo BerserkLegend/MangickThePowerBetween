@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1003}
   - component: {fileID: 1004}
   - component: {fileID: 1005}
+  - component: {fileID: 1006}
   m_Layer: 6
   m_Name: PrototypePlayer
   m_TagString: Player
@@ -187,6 +188,21 @@ MonoBehaviour:
   hitImpulse: 5
   attackSize: {x: 1.2, y: 1}
   attackVisual: {fileID: 1101}
+--- !u!114 &1006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57d17ad9472c41e183011035e69b03cd, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBehaviourPrototype.Health
+  maxHealth: 5
+  currentHealth: 5
+  damageFlashDuration: 0.12
 --- !u!1 &1100
 GameObject:
   m_ObjectHideFlags: 0

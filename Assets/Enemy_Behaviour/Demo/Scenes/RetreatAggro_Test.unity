@@ -560,6 +560,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1006, guid: b0d0de68728a4ffa9a3a7c0642c42d60, type: 3}
+      propertyPath: maxHealth
+      value: 9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006, guid: b0d0de68728a4ffa9a3a7c0642c42d60, type: 3}
+      propertyPath: currentHealth
+      value: 9999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -955,7 +963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehaviourPrototype.EnemyRetreat
   retreatEnabled: 1
   retreatHpPercent: 90
-  maxRetreats: 3
+  maxRetreats: 999
   retreatCooldown: 8
   retreatsUsed: 0
   retreatSpeedMultiplier: 1.2

@@ -44,7 +44,7 @@ Demo/Editor/ — пакетная проверка ColliderCombatVerification.Ru
 - В Run Subgraph для динамического вызова выбирай соответствующий Blackboard и связывай его параметры с EnemyBlackboard.
 
 Удар игрока ищет Health через Collider2D в Physics2D.OverlapBoxAll и вызывает TakeDamage(1f, attacker) напрямую; составные коллайдеры получают один удар. Динамические Rigidbody2D отталкиваются.
-Атака врага проверяет расстояние между Collider2D и снимает HP игрока. Health добавляется игроку при включении. События Health уведомляют агро и отступление об уже полученном уроне.
+Атака врага проверяет расстояние между Collider2D и снимает HP игрока. Health сохранён на префабе PrototypePlayer и настраивается в Inspector до запуска игры. События Health уведомляют агро и отступление об уже полученном уроне.
 
 Новый тип врага добавляй рядом с Base и Defender, со своими Behavior, Prefabs и, при необходимости, Runtime.
 Общую логику нескольких типов держи в Enemies/Common. Классы, namespaces и GUID при этой реорганизации сохранены.
