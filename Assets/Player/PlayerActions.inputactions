@@ -42,7 +42,7 @@
                     "id": "86bc72ad-3e7a-4f7f-b278-a7b09003d6e5",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": true,
                     "priority": 0
                 },

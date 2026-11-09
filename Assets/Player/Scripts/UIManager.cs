@@ -3,11 +3,12 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("Настройки UI")]
+    [Header("UI Settings")]
     public Image healthFill;
     public Image manaFill;
+    public Image staminaFill;
 
-    [Header("Ссылка на игрока")]
+    [Header("Link to Player")]
     public PlayerStats playerStats;
 
     void Update()
@@ -19,5 +20,10 @@ public class UIManager : MonoBehaviour
 
         float maxMana = playerStats.unlockedManaSectors * playerStats.manaPerSector;
         manaFill.fillAmount = playerStats.currentMana / maxMana;
+
+        if (staminaFill != null)
+        {
+            staminaFill.fillAmount = playerStats.currentStamina / playerStats.maxStamina;
+        }
     }
 }

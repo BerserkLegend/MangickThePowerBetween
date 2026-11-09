@@ -34,14 +34,34 @@ public class PlayerStats : MonoBehaviour
     private float lastBalanceDamageTime;
     private PlayerControl playerMovement;
 
+    [Header("Adrenaline (Sword)")]
+    public int currentAdrenaline = 0;
+    public int maxAdrenaline = 15; 
+    public LayerMask enemyLayer;
+    private float adrenalineTimer = 0f;
+    private float combatTimer = 0f;
+    private Animator anim;
+
+    [Header("Stamina For Roll")]
+    public float maxStamina = 100f;
+    public float currentStamina;
+    [Tooltip("Cost For Roll")]
+    public float rollCost = 34f; 
+    public float staminaRegenRate = 40f; 
+    public float staminaRegenDelay = 0.5f; 
+    private float lastStaminaUseTime;
+
     void Start()
     {
         currentHealth = unlockedHpSectors * hpPerSector; 
         
         currentMana = unlockedManaSectors * manaPerSector; 
+
+        currentStamina = maxStamina;
         
         currentBalance = maxBalance;
         playerMovement = GetComponent<PlayerControl>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -57,11 +77,45 @@ public class PlayerStats : MonoBehaviour
                 }
             }
         }
+
+        if (combatTimer > 0)
+        {
+            combatTimer -= Time.deltaTime;
+    
+            bool isNearEnemy = Physics2D.OverlapCircle(transform.position, 3f, enemyLayer);
+    
+            if (isNearEnemy)
+            {
+                adrenalineTimer += Time.deltaTime;
+                if (adrenalineTimer >= 2.5f)
+                {
+                    adrenalineTimer = 0f;
+                    currentAdrenaline++;
+                    if (currentAdrenaline > maxAdrenaline) currentAdrenaline = maxAdrenaline;
+                    UpdateAnimationSpeed();
+                }
+            }
+            else
+            {
+                adrenalineTimer = 0f;
+            }
+        }
+        if (currentStamina < maxStamina && Time.time >= lastStaminaUseTime + staminaRegenDelay)
+        {
+            currentStamina += staminaRegenRate * Time.deltaTime;
+            if (currentStamina > maxStamina)
+            {
+                currentStamina = maxStamina;
+            }
+        }
     }
 
     public void TakeDamage(int hpDamage, float balanceDamage)
     {
         if (playerMovement != null && playerMovement.isInvulnerable) return;
+
+        currentAdrenaline = 0; 
+        UpdateAnimationSpeed();
 
         int finalHpDamage = isStunned ? hpDamage * stunDamageMultiplier : hpDamage;
         
@@ -136,5 +190,33 @@ public class PlayerStats : MonoBehaviour
     private void Die()
     {
         Debug.Log("ИГРОК УМЕР.");
+    }
+
+    public void MarkCombatActivity()
+    {
+        combatTimer = 3f;
+    }
+
+    public void UpdateAnimationSpeed()
+    {
+        if (anim == null) return;
+    
+        int boosts = currentAdrenaline / 3;
+        float speedMultiplier = 1f + (boosts * 0.05f); 
+    
+        anim.speed = speedMultiplier;
+    }
+
+    public bool TryConsumeStamina()
+    {
+        if (currentStamina >= rollCost)
+        {
+            currentStamina -= rollCost;
+            lastStaminaUseTime = Time.time;
+            return true;
+        }
+    
+        Debug.Log("Не хватает выносливости для переката!");
+        return false;
     }
 }

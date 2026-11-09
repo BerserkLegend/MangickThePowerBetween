@@ -22,7 +22,7 @@ public class SwordWeapon : WeaponBase
     public float thrustActiveFrames = 5f;
     
     private bool isAttacking = false;
-    private bool isParrying = false;
+    public bool isParrying { get; private set; }
     private bool parrySuccessful = false;
 
     private int comboStep = 0;
@@ -98,6 +98,12 @@ public class SwordWeapon : WeaponBase
     private void DealDamage(float currentDamage)
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+
+        if (hitEnemies.Length > 0)
+        {
+            stats.MarkCombatActivity();
+        }
+
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyStats>()?.TakeDamage(currentDamage, 10f);

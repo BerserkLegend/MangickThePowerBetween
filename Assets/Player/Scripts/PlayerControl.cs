@@ -120,9 +120,12 @@ public class PlayerControl : MonoBehaviour
 
     void OnRoll(InputValue value)
     {
-        if (!isRolling) 
+        if (!isRolling && stats != null && !stats.isStunned)
         {
-            StartCoroutine(RollRoutine());
+            if (stats.TryConsumeStamina())
+            {
+                StartCoroutine(RollRoutine());
+            }
         }
     }
 
